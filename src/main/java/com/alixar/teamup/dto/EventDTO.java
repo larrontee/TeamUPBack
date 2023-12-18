@@ -27,11 +27,10 @@ import lombok.NoArgsConstructor;
 public class EventDTO {
 	private Long id;
 	private String name;
-	private UserEntity creator;
+	private UserDTO creator;
 	private String description;
 	private LocalDate date;
 	private String address;
 	private String tipoEvent;
-	private String location;
 	private Set<UserDTO> participants;
 }

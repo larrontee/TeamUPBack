@@ -31,6 +31,7 @@ import lombok.ToString;
 @Table(name = "Events")
 public class EventEntity {
 	@Id
+	 @Column(unique = true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
@@ -45,8 +46,6 @@ public class EventEntity {
 	private String address;
 	@Column(nullable = false)
 	private String tipoEvent;
-	@Column(nullable = false)
-	private String location;
 	@ManyToMany
 	@JoinTable(name = "event_participants", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private Set<UserEntity> participants;

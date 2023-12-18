@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 		Boolean userExits = userRepository.existsById(userId);
 		UserEntity usernameExits = userRepository.findByUsername(updatedUser.getUsername());
 
-		if (userExits && usernameExits==null) {
+		if (userExits) {
 			userRepository.save(updatedUser);
 		} else {
 			throw new RuntimeException("Usuario no encontrado con ID: " + userId);

@@ -37,7 +37,13 @@ public class EventServiceImpl {
 	public EventEntity updateEvent(Long id, EventEntity event) {
 		EventEntity exist = eventRepository.findById(id).get();
 		if (exist != null) {
-			return eventRepository.save(event);
+			exist.setAddress(event.getAddress());
+			exist.setDate(event.getDate());
+			exist.setDescription(event.getDescription());
+			exist.setName(event.getName());
+			exist.setParticipants(event.getParticipants());
+			exist.setTipoEvent(event.getTipoEvent());
+			return eventRepository.save(exist);
 		}
 		return null;
 	}
@@ -45,7 +51,7 @@ public class EventServiceImpl {
 
 
 	public Set<EventEntity> getAllEvents() {
-		Iterable<EventEntity> allEventsIterable = eventRepository.findAll(Sort.by(Sort.Direction.ASC, "startDate"));
+		Iterable<EventEntity> allEventsIterable = eventRepository.findAll(Sort.by(Sort.Direction.ASC, "date"));
 		Set<EventEntity> allEvents = new HashSet<>();
 		allEventsIterable.forEach(allEvents::add);
 		return allEvents;
