@@ -27,7 +27,11 @@ public class TeamServiceImpl {
 	 public TeamEntity updateTeam(Long id, TeamEntity team) {
 	  TeamEntity updateTeam = teamRepository.findById(id).get()	;
 	  if(updateTeam!=null  ) {
-		  return teamRepository.save(team);		  
+		  updateTeam.setDescription(team.getDescription());
+		  updateTeam.setMiembros(team.getMiembros());
+		  updateTeam.setName(team.getName());
+		  updateTeam.setPhoto(team.getPhoto());
+		  return teamRepository.save(updateTeam);		  
 	  }
 	  return null;		  
 

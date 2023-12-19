@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 public class TeamDTO {
 	private Long id;
 	private String name;
-	private UserEntity creator;
+	private UserDTO creator;
 	private String photo;
 	private LocalDate foundation;
 	private String description;
